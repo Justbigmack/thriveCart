@@ -3,7 +3,6 @@ import { EmptyCart } from "@/components/ShoppingCart/EmptyCart";
 import { useBasketSelector } from "@/hooks/useBasket";
 
 export const CartList = () => {
-  console.log("Cart ");
   const items = useBasketSelector((b) => b.getItems());
   const totalItems = items.reduce((sum, item) => sum + item.quantity, 0);
 

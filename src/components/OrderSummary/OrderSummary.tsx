@@ -6,7 +6,6 @@ import { SummaryLineItem } from "./SummaryLineItem";
 import { useBasketSelector } from "@/hooks/useBasket";
 
 export const OrderSummary = () => {
-  console.log("Order summary rerender");
   const totals = useBasketSelector((basket) => basket.total());
   const hasItems = useBasketSelector((basket) => basket.getItems().length > 0);
   const { totalCost, deliveryCost, discount, subtotalCost } = totals;
