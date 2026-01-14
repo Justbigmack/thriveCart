@@ -2,6 +2,7 @@ import { useContext, useEffect, useRef, useState } from "react";
 
 import { Basket } from "@features/basket/Basket";
 import { BasketContext } from "@context/BasketContext";
+import { shallowEqual } from "@lib/utils";
 
 //Use this to subscribe to specific pieces of data.
 // The component will only rerender if the selected value changes.
@@ -18,10 +19,7 @@ export const useBasketSelector = <T,>(selector: (basket: Basket) => T): T => {
       const nextSelectedState = selector(basket);
 
       // Shallow comparison to prevent rerenders if data is identical
-      if (
-        JSON.stringify(lastSelectedState.current) !==
-        JSON.stringify(nextSelectedState)
-      ) {
+      if (!shallowEqual(lastSelectedState.current, nextSelectedState)) {
         lastSelectedState.current = nextSelectedState;
         setSelectedState(nextSelectedState);
       }
