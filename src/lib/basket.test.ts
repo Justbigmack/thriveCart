@@ -21,7 +21,6 @@ describe("truncateToCents", () => {
   });
 
   it("should handle floating point precision issues", () => {
-    // Epsilon prevents 98.26999... from becoming 98.26
     expect(truncateToCents(98.2699999999999)).toBe(98.27);
     expect(truncateToCents(16.4699999999999)).toBe(16.47);
   });
