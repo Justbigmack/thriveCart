@@ -26,7 +26,7 @@ export const BasketProvider: React.FC<{ children: React.ReactNode }> = ({
 
   if (isLoading) return <LoadingPage />;
 
-  if (isError) <ErrorPage />;
+  if (isError) return <ErrorPage />;
 
   if (!basket) return null;
 
