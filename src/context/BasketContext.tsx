@@ -1,9 +1,9 @@
 import React, { createContext, useMemo } from "react";
 
-import { Basket } from "@/features/basket/Basket";
-import { ErrorPage } from "@/components/Layout/ErrorPage";
-import { LoadingPage } from "@/components/Layout/LoadingPage";
-import { fetchBasketInfo } from "@/api/basket";
+import { Basket } from "@features/basket/Basket";
+import { ErrorPage } from "@components/Layout/ErrorPage";
+import { LoadingPage } from "@components/Layout/LoadingPage";
+import { fetchBasketInfo } from "@api/basket";
 import { useQuery } from "@tanstack/react-query";
 
 export const BasketContext = createContext<Basket | null>(null);

@@ -1,9 +1,9 @@
 import { Card, CardContent, CardHeader, CardTitle } from "@components/ui/card";
 
-import { ActiveOffers } from "./ActiveOffers";
+import { ActiveOffers } from "@components/OrderSummary/ActiveOffers";
 import { Separator } from "@components/ui/separator";
-import { SummaryLineItem } from "./SummaryLineItem";
-import { useBasketSelector } from "@/hooks/useBasket";
+import { SummaryLineItem } from "@components/OrderSummary/SummaryLineItem";
+import { useBasketSelector } from "@hooks/useBasket";
 
 export const OrderSummary = () => {
   const totals = useBasketSelector((basket) => basket.total());

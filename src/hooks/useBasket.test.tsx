@@ -1,12 +1,15 @@
 import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
-import { useBasketActions, useBasketSelector } from "@/hooks/useBasket";
+import { useBasketActions, useBasketSelector } from "@hooks/useBasket";
 
-import { Basket } from "@/features/basket/Basket";
-import { BasketContext } from "@/context/BasketContext";
+import { Basket } from "@features/basket/Basket";
+import { BasketContext } from "@context/BasketContext";
 import React from "react";
 
-type MockBasket = Pick<Basket, "subscribe" | "total" | "add" | "remove" | "getCatalogue"> & {
+type MockBasket = Pick<
+  Basket,
+  "subscribe" | "total" | "add" | "remove" | "getCatalogue"
+> & {
   notify: () => void;
 };
 
@@ -20,7 +23,12 @@ const createMockBasket = (): MockBasket => {
       };
     }),
     notify: () => listeners.forEach((l) => l()),
-    total: vi.fn(() => ({ totalCost: 100, subtotalCost: 100, discount: 0, deliveryCost: 0 })),
+    total: vi.fn(() => ({
+      totalCost: 100,
+      subtotalCost: 100,
+      discount: 0,
+      deliveryCost: 0,
+    })),
     add: vi.fn(),
     remove: vi.fn(),
     getCatalogue: vi.fn(() => []),

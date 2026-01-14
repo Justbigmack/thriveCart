@@ -1,11 +1,7 @@
 import { beforeEach, describe, expect, it } from "vitest";
-import {
-  mockedDeliveryRules,
-  mockedOffers,
-  mockedProducts,
-} from "@/api/basket";
+import { mockedDeliveryRules, mockedOffers, mockedProducts } from "@api/basket";
 
-import { Basket } from "@/features/basket/Basket";
+import { Basket } from "@features/basket/Basket";
 
 describe("Basket Business Logic", () => {
   let basket: Basket;

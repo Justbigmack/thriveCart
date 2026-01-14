@@ -1,7 +1,7 @@
 import { useContext, useEffect, useRef, useState } from "react";
 
-import { Basket } from "@/features/basket/Basket";
-import { BasketContext } from "@/context/BasketContext";
+import { Basket } from "@features/basket/Basket";
+import { BasketContext } from "@context/BasketContext";
 
 //Use this to subscribe to specific pieces of data.
 // The component will only rerender if the selected value changes.

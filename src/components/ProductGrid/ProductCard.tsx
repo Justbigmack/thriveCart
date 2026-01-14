@@ -9,7 +9,7 @@ import {
 import { Button } from "@components/ui/button";
 import { Plus } from "lucide-react";
 import { Product } from "@/types/basket";
-import { useBasketActions } from "@/hooks/useBasket";
+import { useBasketActions } from "@hooks/useBasket";
 
 interface ProductCardProps {
   product: Product;

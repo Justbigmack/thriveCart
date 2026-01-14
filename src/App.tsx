@@ -1,6 +1,6 @@
-import { CartList } from "@/components/ShoppingCart/CartList";
+import { CartList } from "@components/ShoppingCart/CartList";
 import { Layout } from "@components/Layout/Layout";
-import { OrderSummary } from "@/components/OrderSummary/OrderSummary";
+import { OrderSummary } from "@components/OrderSummary/OrderSummary";
 import { ProductGrid } from "@components/ProductGrid/ProductGrid";
 
 const App = () => {

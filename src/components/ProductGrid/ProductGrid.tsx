@@ -1,5 +1,5 @@
 import { ProductCard } from "@components/ProductGrid/ProductCard";
-import { useBasketActions } from "@/hooks/useBasket";
+import { useBasketActions } from "@hooks/useBasket";
 
 export const ProductGrid = () => {
   const { getCatalogue } = useBasketActions();

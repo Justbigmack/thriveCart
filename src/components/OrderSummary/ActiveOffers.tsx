@@ -1,6 +1,6 @@
 import { Badge } from "@components/ui/badge";
 import { Separator } from "@components/ui/separator";
-import { useBasketSelector } from "@/hooks/useBasket";
+import { useBasketSelector } from "@hooks/useBasket";
 
 export const ActiveOffers = () => {
   const activeOffers = useBasketSelector((b) => b.getApplicableOffers());

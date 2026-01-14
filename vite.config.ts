@@ -8,9 +8,11 @@ export default defineConfig({
     alias: {
       "@": path.resolve(__dirname, "./src"),
       "@components": path.resolve(__dirname, "./src/components"),
+      "@context": path.resolve(__dirname, "./src/context"),
+      "@hooks": path.resolve(__dirname, "./src/hooks"),
       "@api": path.resolve(__dirname, "./src/api"),
+      "@features": path.resolve(__dirname, "./src/features"),
       "@lib": path.resolve(__dirname, "./src/lib"),
-      "@types": path.resolve(__dirname, "./src/types"),
     },
   },
 });

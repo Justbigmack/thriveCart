@@ -1,6 +1,6 @@
-import { CartItem } from "@/components/ShoppingCart/CartItem";
-import { EmptyCart } from "@/components/ShoppingCart/EmptyCart";
-import { useBasketSelector } from "@/hooks/useBasket";
+import { CartItem } from "@components/ShoppingCart/CartItem";
+import { EmptyCart } from "@components/ShoppingCart/EmptyCart";
+import { useBasketSelector } from "@hooks/useBasket";
 
 export const CartList = () => {
   const items = useBasketSelector((b) => b.getItems());

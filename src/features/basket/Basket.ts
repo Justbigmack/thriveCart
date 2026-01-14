@@ -33,7 +33,9 @@ export class Basket {
   public getCatalogue = () => this.catalogue;
 
   public getApplicableOffers = () => {
-    return this.offers.filter((offer) => offer.calculateDiscount(this.items) > 0);
+    return this.offers.filter(
+      (offer) => offer.calculateDiscount(this.items) > 0
+    );
   };
 
   public getItems = (): CartItem[] => {

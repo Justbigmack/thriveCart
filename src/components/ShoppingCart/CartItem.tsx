@@ -4,7 +4,7 @@ import { Minus, Plus, Trash2 } from "lucide-react";
 import { Button } from "@components/ui/button";
 import { CartItem as CartItemType } from "@/types/basket";
 import { memo } from "react";
-import { useBasketActions } from "@/hooks/useBasket";
+import { useBasketActions } from "@hooks/useBasket";
 
 interface CartItemProps {
   item: CartItemType;
