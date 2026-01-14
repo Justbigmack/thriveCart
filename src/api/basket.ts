@@ -17,7 +17,7 @@ export const mockedDeliveryRules: DeliveryRule[] = [
 export const mockedOffers: Offer[] = [
   {
     id: "red-widget-bogo",
-    productCode: "RO1",
+    productCode: "R01",
     description: "Buy one red widget, get the second half price",
     calculateDiscount: (items) => {
       const reds = items.filter((i) => i.code === "R01");
