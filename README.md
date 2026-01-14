@@ -41,6 +41,7 @@ In order to make react react (pun intended) to the changes in class, logic with 
 - Proper data retrieval from backend
 - Better error handling
 - Performance optimizations
+- Internationalization
 - Many more
 
 ## Getting Started
