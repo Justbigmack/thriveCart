@@ -80,7 +80,7 @@ describe("Basket Business Logic", () => {
       basket.add("R01");
       basket.add("R01");
       basket.add("R01");
-      expect(basket.total().discount).toBe(16.47);
+      expect(basket.total().discount).toBe(16.48);
     });
   });
 

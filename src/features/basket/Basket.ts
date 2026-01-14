@@ -98,13 +98,14 @@ export class Basket {
 
     const rawTotal = discountedSubtotal + deliveryCost;
 
+    const subtotalCost = truncateToCents(subtotal);
     const totalCost = truncateToCents(rawTotal);
-    const finalDiscount = truncateToCents(totalDiscount);
-    const finalSubtotal = truncateToCents(subtotal);
+    // This is displayed discount to avoid visual inconsistencies
+    const discount = truncateToCents(subtotalCost - totalCost + deliveryCost);
 
     return {
-      subtotalCost: finalSubtotal,
-      discount: finalDiscount,
+      subtotalCost,
+      discount,
       deliveryCost,
       totalCost,
     };
