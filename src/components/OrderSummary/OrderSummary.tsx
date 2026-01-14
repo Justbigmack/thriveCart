@@ -29,11 +29,13 @@ export const OrderSummary = () => {
           />
         )}
 
-        <SummaryLineItem
-          label="Shipping"
-          value={deliveryCost === 0 ? "Free" : `$${deliveryCost.toFixed(2)}`}
-          valueClassName={deliveryCost === 0 ? "text-green-600" : ""}
-        />
+        {totalCost !== 0 && (
+          <SummaryLineItem
+            label="Shipping"
+            value={deliveryCost === 0 ? "Free" : `$${deliveryCost.toFixed(2)}`}
+            valueClassName={deliveryCost === 0 ? "text-green-600" : ""}
+          />
+        )}
 
         <Separator />
 
