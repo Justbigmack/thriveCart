@@ -18,14 +18,16 @@ This application could use SSR, but given the assignment mentioning simple Types
 
 This task is simple in its nature, but the fact that class has to be used makes it a bit harded to create in React, because you have to make the UI reactive to the cart changes. You will see the following structure in the project:
 
+```
 src/
-├── api/ # Where all api requests would live, but right now it is just mocked requests
+├── api/        # Where all api requests would live, but right now it is just mocked requests
 ├── components/ # All shadcn and app UI components live here
-├── context/ # Logic for the shared basket context lives here
-├── features/ # I was not sure how to call this folder, but all the cart class logic lives here
-├── hooks/ # Custom hooks live here (for example, )
-├── lib/ # default folder for shadcn utils, can be ignored
-├── types/ # Place to keep all the types
+├── context/    # Logic for the shared basket context lives here
+├── features/   # I was not sure how to call this folder, but all the cart class logic lives here
+├── hooks/      # Custom hooks live here (for example, useBasket)
+├── lib/        # default folder for shadcn utils, can be ignored
+├── types/      # Place to keep all the types
+```
 
 In order to make react react (pun intended) to the changes in class, logic with notifications and subscriptions has been implemented. However, that would result in all the components being rerendered all the time once a small thing changes. To remove unnecessary rerenders custom selectors have been implemented in src/hooks/useBasket.tsx. Sometimes that is not enough, hence other optimizations like CartItemComponent with memo or useMemo for memoizing some values across the app. The UI is not the best and not very polished, because the assignment didn't require a splendid one. The app is also developed with accessibility in mind. It mostly comes from the shadcn library and semantic HTML, because the application is not that complex. For testing vitest and react testing library have been chosen. I tried to cover business logic with tests, but decided to not write E2E tests as it would be an overkill for the assignment, imo. This, however, was considered and is something I would write when shipping code to production.
 
