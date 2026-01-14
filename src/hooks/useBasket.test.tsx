@@ -1,15 +1,17 @@
 import { act, renderHook } from "@testing-library/react";
-import { beforeEach, describe, expect, it, vi } from "vitest";
+import { Mock, beforeEach, describe, expect, it, vi } from "vitest";
 import { useBasketActions, useBasketSelector } from "@hooks/useBasket";
 
 import { Basket } from "@features/basket/Basket";
 import { BasketContext } from "@context/BasketContext";
 import React from "react";
 
-type MockBasket = Pick<
-  Basket,
-  "subscribe" | "total" | "add" | "remove" | "getCatalogue"
-> & {
+type MockBasket = {
+  subscribe: Mock;
+  total: Mock;
+  add: Mock;
+  remove: Mock;
+  getCatalogue: Mock;
   notify: () => void;
 };
 
