@@ -1,5 +1,7 @@
 import { CartItem, DeliveryRule, Offer, Product } from "@/types/basket";
 
+import { truncateToCents } from "@/lib/basket";
+
 export class Basket {
   private catalogue: Product[] = [];
   private deliveryRules: DeliveryRule[];
@@ -79,6 +81,10 @@ export class Basket {
 
   // Calculates the total with truncation to 2 decimal places (for example, 54.375 -> 54.37)
   public total = () => {
+    if (this.items.length === 0) {
+      return { subtotalCost: 0, discount: 0, deliveryCost: 0, totalCost: 0 };
+    }
+
     const subtotal = this.items.reduce((sum, item) => sum + item.price, 0);
     const totalDiscount = this.offers.reduce(
       (sum, offer) => offer.calculateDiscount(this.items) + sum,
@@ -92,14 +98,14 @@ export class Basket {
 
     const rawTotal = discountedSubtotal + deliveryCost;
 
-    const totalCost = Math.floor(rawTotal * 100 + 0.00000001) / 100;
-    const finalDiscount = Math.floor(totalDiscount * 100 + 0.00000001) / 100;
-    const finalSubtotal = Math.floor(subtotal * 100 + 0.00000001) / 100;
+    const totalCost = truncateToCents(rawTotal);
+    const finalDiscount = truncateToCents(totalDiscount);
+    const finalSubtotal = truncateToCents(subtotal);
 
     return {
       subtotalCost: finalSubtotal,
       discount: finalDiscount,
-      deliveryCost: deliveryCost,
+      deliveryCost,
       totalCost,
     };
   };
