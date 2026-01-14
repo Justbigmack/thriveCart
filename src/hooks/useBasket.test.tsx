@@ -2,20 +2,25 @@ import { act, renderHook } from "@testing-library/react";
 import { beforeEach, describe, expect, it, vi } from "vitest";
 import { useBasketActions, useBasketSelector } from "@/hooks/useBasket";
 
+import { Basket } from "@/features/basket/Basket";
 import { BasketContext } from "@/context/BasketContext";
 import React from "react";
 
-const createMockBasket = () => {
+type MockBasket = Pick<Basket, "subscribe" | "total" | "add" | "remove" | "getCatalogue"> & {
+  notify: () => void;
+};
+
+const createMockBasket = (): MockBasket => {
   let listeners: Array<() => void> = [];
   return {
-    subscribe: vi.fn((l) => {
+    subscribe: vi.fn((l: () => void) => {
       listeners.push(l);
       return () => {
         listeners = listeners.filter((item) => item !== l);
       };
     }),
     notify: () => listeners.forEach((l) => l()),
-    total: vi.fn(() => ({ totalCost: 100 })),
+    total: vi.fn(() => ({ totalCost: 100, subtotalCost: 100, discount: 0, deliveryCost: 0 })),
     add: vi.fn(),
     remove: vi.fn(),
     getCatalogue: vi.fn(() => []),
@@ -23,13 +28,13 @@ const createMockBasket = () => {
 };
 
 describe("Basket Hooks", () => {
-  let mockBasket: any;
+  let mockBasket: MockBasket;
   let wrapper: React.FC<{ children: React.ReactNode }>;
 
   beforeEach(() => {
     mockBasket = createMockBasket();
     wrapper = ({ children }) => (
-      <BasketContext.Provider value={mockBasket as any}>
+      <BasketContext.Provider value={mockBasket as unknown as Basket}>
         {children}
       </BasketContext.Provider>
     );
