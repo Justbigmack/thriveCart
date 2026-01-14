@@ -2,7 +2,6 @@ import { ProductCard } from "@components/ProductGrid/ProductCard";
 import { useBasketActions } from "@/hooks/useBasket";
 
 export const ProductGrid = () => {
-  console.log("Product Grid was rerendered");
   const { getCatalogue } = useBasketActions();
   const products = getCatalogue();
 
