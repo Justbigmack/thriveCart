@@ -21,6 +21,7 @@ export const BasketProvider: React.FC<{ children: React.ReactNode }> = ({
     if (!data) return null;
     const basketInstance = new Basket(data.deliveryRules, data.offers);
     basketInstance.setupCatalogue(data.products);
+    basketInstance.loadFromStorage();
     return basketInstance;
   }, [data]);
 

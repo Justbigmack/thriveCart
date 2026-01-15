@@ -8,6 +8,7 @@ export class Basket {
   private offers: Offer[];
   private items: Product[] = [];
   private listeners: Array<() => void> = [];
+  private static STORAGE_KEY = "basket-items";
 
   constructor(deliveryRules: DeliveryRule[], offers: Offer[]) {
     this.deliveryRules = [...deliveryRules].sort(
@@ -59,6 +60,7 @@ export class Basket {
     const product = this.catalogue.find((p) => p.code === productCode);
     if (product) {
       this.items = [...this.items, { ...product }];
+      this.saveToStorage();
       this.notify();
     }
   };
@@ -76,7 +78,30 @@ export class Basket {
         return true;
       });
     }
+    this.saveToStorage();
     this.notify();
+  };
+
+  private saveToStorage = (): void => {
+    const codes = this.items.map((item) => item.code);
+    localStorage.setItem(Basket.STORAGE_KEY, JSON.stringify(codes));
+  };
+
+  public loadFromStorage = (): void => {
+    const stored = localStorage.getItem(Basket.STORAGE_KEY);
+    if (!stored) return;
+    try {
+      const codes: string[] = JSON.parse(stored);
+      codes.forEach((code) => {
+        const product = this.catalogue.find((p) => p.code === code);
+        if (product) {
+          this.items.push({ ...product });
+        }
+      });
+      this.notify();
+    } catch {
+      // Invalid storage data, ignore
+    }
   };
 
   // Calculates the total with truncation to 2 decimal places (for example, 54.375 -> 54.37)
